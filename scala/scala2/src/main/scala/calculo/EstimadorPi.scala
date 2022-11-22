@@ -4,9 +4,9 @@ package calculo // Esto nos da una forma de organizar
 import scala.math.random
 //import scala.math.pow
 
-class Pi(val numero_de_dardos:Int): // Lo que ponemos aquí se recibe en el constructor de la clase
+class EstimadorPi(val numero_de_dardos:Int){ // Lo que ponemos aquí se recibe en el constructor de la clase
 
-    def estimar: Double = 
+    def estimar: Double = {
         // Defino el número total de dardos que voy a tirar
         // val numero_de_dardos = 3000000  // En este caso usamos la palabra val por que NO ES UNA VARIABLE!
                                         // Si no UNA CONSTANTE
@@ -22,7 +22,7 @@ class Pi(val numero_de_dardos:Int): // Lo que ponemos aquí se recibe en el cons
                                                 // var numero_de_dardos_en_el_circulo:Int = preguntarAlUsuarioPorElNumeroMaximoDeVeces()
         // Por cada dardo que necesite tirar:   BUCLE
         var dardo_actual = 0
-        for (dardo_actual <- 1 to numero_de_dardos) 
+        for (dardo_actual <- 1 to numero_de_dardos) {
             // Generar un número aletario x
             val coordenada_x:Double = random // Da entre 0 y 1
             // Generar un número aletario y
@@ -36,9 +36,11 @@ class Pi(val numero_de_dardos:Int): // Lo que ponemos aquí se recibe en el cons
             if (distancia_al_centro_al_cuadrado <= 1)
                 // Incrementar la cuenta de dardos dentro del círculo
                 numero_de_dardos_en_el_circulo += 1
-        
+        }
         // Estimo Pi como: 4 x número de dardos en el círculo / número de dardos totales
         val Pi = 4.0 * numero_de_dardos_en_el_circulo / numero_de_dardos
         return Pi
         // Lo mostramos por pantalla
         //println(s"El valor estimado de Pi, habiendo tirado ${numero_de_dardos} dardos, es: ${Pi}")
+    }
+}

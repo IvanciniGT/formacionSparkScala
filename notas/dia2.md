@@ -48,4 +48,33 @@ serán la coordenada x e y donde impactó el dardo.
 Cómo sé si un dardo cayó dentro del círculo?
     Pitagoras: x^2 + y*2 <= 1
         Si se cumple eso, es que el dardo está dentro del círculo
-        
+
+---
+
+# Pruebas de software
+
+- Estáticas: No requieren poner el código en funcionamiento
+             La que antes hacía un desarrollador SENIOR.
+             Se centra en la calidad del código.
+             Esto en la mayor parte de las compañías está AUTOMATIZADO: SONARQUBE
+- Dinámicas: Si requieren poner el código en funcionamiento
+    - Pruebas funcionales: Ver si aquello funciona
+                            OBJETO DE PRUEBA       
+        - Unitarias         Un componente "aislado" del sistema (metodo, clase)
+                Para meter pruebas unitarias usamos frameworks de pruebas unitarias. 
+        - Integración       Comunicación entre 2 componentes
+        - Sistema           Comportamiento del sistema en su conjunto
+            - Aceptación
+    - Pruebas no funcionales:
+        - Pruebas de rendimiento
+
+---
+
+# Estimación PI Map Reduce
+
+1 -> tiroDardo -> (x1,y1) -> calcularDistancia ->   d1 ->   estaEnCirculo ->    1
+2                 (x2,y2)                           d2                          0
+3                 (x3,y3)                           d3                          1
+4                 (x4,y4)                           d4                          1
+                                                                            ----------
+                                                                            Reduce: sumarlo = DardosDentro

@@ -1,9 +1,9 @@
 // Scala version 3
 
-import calculo.Pi // La clase Pi está dentro del paquete calculo
+import calculo.EstimadorPi // La clase Pi está dentro del paquete calculo
 
 @main def hello: Unit = 
-    val estimador_de_pi = new Pi(3000000)
+    val estimador_de_pi = new EstimadorPi(3000000)
     val estimacion_pi_1 = estimador_de_pi.estimar
     val estimacion_pi_2 = estimador_de_pi.estimar
     val estimacion_pi_3 = estimador_de_pi.estimar

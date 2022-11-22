@@ -1,0 +1,22 @@
+[0m[[0m[31merror[0m] [0m[0m/home/ubuntu/environment/curso/scala/scala3/src/main/scala/Main.scala:5:7: expected start of definition[0m
+[0m[[0m[31merror[0m] [0m[0m@main def hello: Unit = [0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/ubuntu/environment/curso/scala/scala3/src/main/scala/Main.scala:7:5: expected class or object definition[0m
+[0m[[0m[31merror[0m] [0m[0m    val estimacion_pi_1 = estimador_de_pi.estimar()[0m
+[0m[[0m[31merror[0m] [0m[0m    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/ubuntu/environment/curso/scala/scala3/src/main/scala/Main.scala:8:5: expected class or object definition[0m
+[0m[[0m[31merror[0m] [0m[0m    val estimacion_pi_2 = estimador_de_pi.estimar()[0m
+[0m[[0m[31merror[0m] [0m[0m    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/ubuntu/environment/curso/scala/scala3/src/main/scala/Main.scala:9:5: expected class or object definition[0m
+[0m[[0m[31merror[0m] [0m[0m    val estimacion_pi_3 = estimador_de_pi.estimar()[0m
+[0m[[0m[31merror[0m] [0m[0m    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/ubuntu/environment/curso/scala/scala3/src/main/scala/Main.scala:11:5: expected class or object definition[0m
+[0m[[0m[31merror[0m] [0m[0m    println(s"El valor estimado de Pi es: ${estimacion_pi_1}")[0m
+[0m[[0m[31merror[0m] [0m[0m    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/ubuntu/environment/curso/scala/scala3/src/main/scala/Main.scala:12:5: expected class or object definition[0m
+[0m[[0m[31merror[0m] [0m[0m    println(s"El valor estimado de Pi es: ${estimacion_pi_2}")[0m
+[0m[[0m[31merror[0m] [0m[0m    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/ubuntu/environment/curso/scala/scala3/src/main/scala/Main.scala:13:5: expected class or object definition[0m
+[0m[[0m[31merror[0m] [0m[0m    println(s"El valor estimado de Pi es: ${estimacion_pi_3}")[0m
+[0m[[0m[31merror[0m] [0m[0m    ^[0m
+[0m[[0m[31merror[0m] [0m[0m7 errors found[0m

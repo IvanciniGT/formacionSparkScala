@@ -1,0 +1,7 @@
+[0m[[0m[31merror[0m] [0m[0m/home/ubuntu/environment/curso/scala/scala2/src/test/scala/PruebasPy.scala:4:25: not found: value munit[0m
+[0m[[0m[31merror[0m] [0m[0mclass PruebasPy extends munit.FunSuite {[0m
+[0m[[0m[31merror[0m] [0m[0m                        ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/ubuntu/environment/curso/scala/scala2/src/test/scala/PruebasPy.scala:6:3: not found: value test[0m
+[0m[[0m[31merror[0m] [0m[0m  test("Probar el estimador de Pi") {[0m
+[0m[[0m[31merror[0m] [0m[0m  ^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
