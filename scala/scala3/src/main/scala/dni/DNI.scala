@@ -6,15 +6,21 @@ class DNI( val dni:String ):
     val numero:Int = -1
     val letra:Char
     // TODO
+    
     def esValido():Boolean =
         return valido
+        
+    def dameTextoOriginal():Boolean =
+        return dni
+        
     def dameNumero():Int =
         return numero
+    
     def dameLetra():Char =
         return letra
+    
     def formatear(ceros:Boolean, puntos:Boolean, Separador:String = ""):String =
         // TODO
-
 
 object DNI:
     private val LETRAS_DNI: HashMap[Int, Char] = HashMap(
