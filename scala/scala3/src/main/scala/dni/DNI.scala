@@ -5,7 +5,7 @@ class DNI( val dni:String ):
     var valido:Boolean = true
     val numero:Int = -1
     val letra:Char
-    // TODO
+    // TODO         dni.toCharArray.reverse
     
     def esValido():Boolean =
         return valido
