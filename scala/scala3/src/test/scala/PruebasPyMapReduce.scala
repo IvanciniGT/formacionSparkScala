@@ -87,6 +87,6 @@ class PruebasPyMapReduce extends munit.FunSuite {
     val estimacion_pi = estimador_de_pi.estimar
     
     val valor_real_pi = 3.1416
-    assert( abs(estimacion_pi - valor_real_pi) <= 0.002, "La estimación se ha ido de madre!" ) // ASERCIÓN:   REGLA QUE ASEGURE ALGO
+    assert( abs(estimacion_pi - valor_real_pi) <= 0.003, "La estimación se ha ido de madre!" ) // ASERCIÓN:   REGLA QUE ASEGURE ALGO
   }
 }
