@@ -19,7 +19,10 @@ class DNI( val dni:String ):
     def dameLetra():Char =
         return letra
     
-    def formatear(ceros:Boolean, puntos:Boolean, Separador:String = ""):String =
+    def formatear(  ceros:Boolean = false, 
+                    puntos:Boolean = false, 
+                    separador:String = "", l
+                    etraMayusculas:Boolean = true):String =
         // TODO
 
 object DNI:
