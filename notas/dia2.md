@@ -78,3 +78,79 @@ Cómo sé si un dardo cayó dentro del círculo?
 4                 (x4,y4)                           d4                          1
                                                                             ----------
                                                                             Reduce: sumarlo = DardosDentro
+---
+
+Estoy montando unas ETLs en SPARK (bigdata)
+
+Y traen DNIs... vaya aventura !!!!!!
+TABLA 1:    12345678A
+TABLA 2:    12345678-A
+            12345678-a
+            12345678a
+              345678a
+TABLA 3:    00345678a
+TABLA 4:    12.345.678a
+
+Que me puede interesar? 
+    Es disponer de un validador / normalizador de DNIs
+
+        1º Validar si un DNI es correcto
+                (entendiendo todas las vasibles variaciones lógicas de un DNI)
+        2º Extraer de ese texto (DNI) -> El NUMERO y la LETRA
+        3º Aplicar un formato a ese NUMERO y esa LETRA
+            Con puntos / sin ellos
+            Con un determinado caracter separador / sin él
+            Con ceros por delante... o no
+
+DNI en BBDD = String(9) Cuánto ocupa esto en una BBDD? 
+                        Cúanto ocupa un caracter en una BBDD? o en un fichero?
+                        Depende del caracter y del juego de caracteres
+                        0-9[A-Z]                    ASCII / UTF-8  -> 1 byte
+                                                            UTF-32 -> 4 bytes
+              El DNI va a ocupar 9 bytes
+
+Cuanto ocupa el número 99.999.999 en una BBDD?
+    1 bit:  2
+    2 bits: 4
+    3 bits: 8
+    8 bits = 1 byte = 2^8 = 256
+    2 bytes = 256^2 = 65536
+    4 bytes = 65536 ^2 = + 4kM En 4 bytes me sobra para guardar numeros hasta el 4kM
+    
+    Y la letra? 1 byte
+    
+    TOTAL si guardo el numero como numero y la letra aparte? 5 bytes
+
+HDD 10 Mbs x 50.000 pts año 90 - 300€
+
+
+IMPORTANTE: NUNCA JAMAS EN LA VIDA PROGRAMO CONTRA UN CONJUNTO DE DATOS !
+            SIEMPRE PROGRAMO CONTRA UNOS REQUISITOS !!!!!!
+            
+
+23.000.023 / 23             => T
+           --------
+           Me da igual
+ RESTO                      = 0..22
+ 
+ RESTO	0	1	2	3	4	5	6	7	8	9	10	11
+LETRA	T	R	W	A	G	M	Y	F	P	D	X	B
+ 
+
+RESTO	12	13	14	15	16	17	18	19	20	21	22
+LETRA	N	J	Z	S	Q	V	H	L	C	K	E
+
+
+TipoDeDatos: CLASE: DNI(dni)
+                                .esValido():Boolean
+                                .dameNumero():Int
+                                .dameLetra():Char
+                                .formatear(ceros:Boolean, puntos:Boolean, Separador:Char):String
+                        static  .dameLetra(numeroDNI): Char
+                        
+Qué admito como dni?    ESTOS SON MIS REQUERIMIENTOS
+    Que venga con ceros delante
+    Que venga sin puntos y con puntos.....OJO: 12.12.2022-T es válido? No es válido
+                                     Pero bien puestos
+    Que venga sin caracter de separación, o con un espacio o guión...
+    Con la letra en mayuscula o minuscula
