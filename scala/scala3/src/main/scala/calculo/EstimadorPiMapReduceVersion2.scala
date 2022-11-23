@@ -2,7 +2,6 @@ package calculo // Esto nos da una forma de organizar
                 // todos los ficheros de nuestro programa
 import scala.math.random
 import scala.math.sqrt
-
 class EstimadorPiMapReduceVersion2(val numero_de_dardos:Int): // Lo que ponemos aquí se recibe en el constructor de la clase
 
     def calcularDistancia(coordenadas: (Double, Double)): Double =
@@ -14,11 +13,9 @@ class EstimadorPiMapReduceVersion2(val numero_de_dardos:Int): // Lo que ponemos 
     def estimar: Double = 
         var numero_de_dardos_en_el_circulo = (1 to numero_de_dardos)
             .map(       numeroDardo =>          (random, random)        )
-            .map(       coordenadas =>          calcularDistancia       )
-            .map(       distancia   =>          estaEnCirculo           )
-            //.reduce(    (estaEnCirculo1 , estaEnCirculo2)  => estaEnCirculo1 + estaEnCirculo2  )
-            //.reduce ( (dato1, dato2 ) => dato1 + dato2)
-            .reduce (                      _   +   _  )
-        
+            .map(       calcularDistancia       )
+            .map(       estaEnCirculo           )
+            .reduce(   _ + _  )
+
         val Pi = 4.0 * numero_de_dardos_en_el_circulo / numero_de_dardos
         return Pi
