@@ -5,7 +5,7 @@ import scala.collection.immutable.HashMap
 class DNI( val dni:String ):
     // Constructor
     val(numero, letra, error):(Int, Char, String)=DNI.validarDNI(dni)
-    val valido:Boolean = error == null
+    val valido:Boolean = (error == null)
     // TODO         
     
     //def esValido():Boolean =
@@ -124,6 +124,13 @@ object DNI:
                         error = "El dni no es válido"
         if(error != null)
             return ( -1, '-', error)
-        return (numero_del_dni.toInt, letra_del_dni.toUpperCase.charAt(0), null)
+        
+        val numero=numero_del_dni.toInt
+        val letra=letra_del_dni.toUpperCase.charAt(0)
+        
+        if(letra != letraDelNumero(numero))
+            return ( -1, '-', "Letra inválida")
+            
+        return (numero, letra, null)
         
     }
