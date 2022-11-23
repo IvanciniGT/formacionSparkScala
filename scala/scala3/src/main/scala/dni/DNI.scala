@@ -125,6 +125,7 @@ object DNI:
         if(error != null)
             return ( -1, '-', error)
         
+        // TODO: Puede ser que llegue a este punto del programa sin letra ni numero
         val numero=numero_del_dni.toInt
         val letra=letra_del_dni.toUpperCase.charAt(0)
         
