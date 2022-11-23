@@ -14,6 +14,8 @@ object Main extends App {
     val numero_de_dardos    = 1000000
     val PARTICIONES         = 10
     val dardos_a_disparar   = contexto_de_spark.parallelize(1 to numero_de_dardos, PARTICIONES)
+        // TIPO:    RDD
+        // VALORES: Del 1 al 1000000
     
     // Paso 3: Jugar con mis datos... Map-Reduce
     var numero_de_dardos_en_el_circulo = dardos_a_disparar  .map(       EstimadorPi.tirarDardo             )
@@ -21,10 +23,22 @@ object Main extends App {
                                                             .map(       EstimadorPi.estaEnCirculo          )
                                                             .reduce(    EstimadorPi.sumar                  )
     val Pi = 4.0 * numero_de_dardos_en_el_circulo / numero_de_dardos
-    
+
     // Paso 4: Vuelco información
     println(s"El valor de Pi estimado es: ${Pi}")
     
+    // METODO ALTERNATIVO ////////////////////////////////////////////////////////////////////////////////
+    val disparadores_de_dardos  = contexto_de_spark.parallelize(1 to PARTICIONES, PARTICIONES) 
+        // TIPO:    RDD
+        // VALORES: Del 1 al 10
+    var suma_de_pis             = disparadores_de_dardos.map(  disparador =>    new EstimadorPi(numero_de_dardos/PARTICIONES )      )
+                                                        .map(  estimador  =>    estimador.estimar )   
+                                                        .reduce( _ + _ )
+    val Pi2 = suma_de_pis / PARTICIONES
+    println(s"El valor de Pi estimado es: ${Pi2}")
+
+    // FIN METODO ALTERNATIVO ////////////////////////////////////////////////////////////////////////////
+
     // Paso 5: Cierro !
     // En condiciones normales, es decir, ejecutándonos sobre un cluster real, 
     // al acabar nuestro programa, cerrar la conexción que hemos abierto con el cluster

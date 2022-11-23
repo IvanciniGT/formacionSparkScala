@@ -1,6 +1,19 @@
 import scala.math.random
 import scala.math.sqrt
 
+class EstimadorPi(val numero_de_dardos:Int){
+    
+    def estimar: Double = {
+        // En python equivalente a: range(1, numero_de_dardos)
+        var numero_de_dardos_en_el_circulo = (1 to numero_de_dardos).map(       EstimadorPi.tirarDardo             )
+                                                                    .map(       EstimadorPi.calcularDistancia      )
+                                                                    .map(       EstimadorPi.estaEnCirculo          )
+                                                                    .reduce(    EstimadorPi.sumar                  )
+        val Pi = 4.0 * numero_de_dardos_en_el_circulo / numero_de_dardos
+        return Pi
+    }
+}
+
 object EstimadorPi {
     
     def tirarDardo(numeroDardo:Int) : (Double, Double) = {
