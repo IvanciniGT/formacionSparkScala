@@ -4,29 +4,52 @@ import scala.collection.immutable.HashMap
 
 class DNI( val dni:String ):
     // Constructor
-    var valido:Boolean = true
-    val numero:Int = -1
-    val letra:Char = 'a'
+    val(numero, letra, error):(Int, Char, String)=validarDNI(dni)
+    val valido:Boolean = error == null
     // TODO         
     
-    def esValido():Boolean =
-        return valido
+    //def esValido():Boolean =
+    //    return valido
         
-    def dameTextoOriginal():String =
-        return dni
+    //def dameTextoOriginal():String =
+    //    return dni
         
-    def dameNumero():Int =
-        return numero
+    //def dameNumero():Int =
+    //    return numero
     
-    def dameLetra():Char =
-        return letra
+    //def dameLetra():Char =
+    //    return letra
     
     def formatear(  ceros:Boolean = false, 
                     puntos:Boolean = false, 
                     separador:String = "", 
                     letraMayusculas:Boolean = true):String =
-        // TODO
-        return ""
+        // Procesamos separador y letra
+        var dni_formateado : String =s"${separador}${letra}"
+        if(!letraMayusculas)
+            dni_formateado = dni_formateado.toLowerCase()
+        // Procesamos parte numérica... con sus ceros y sus puntos
+        var parte_numerica:String = s"$numero"
+        if (ceros)
+            parte_numerica= s"0000000$numero"
+                            // 0000000123456 . Longitud: 13-8  = 5
+                            // 01234________
+            parte_numerica=parte_numerica.substring(parte_numerica.length-8)
+        
+        val longitud = parte_numerica.length
+        if(puntos && longitud>3)
+            if(longitud>6) // 2300000
+                val unidades = parte_numerica.substring(longitud-3)
+                val miles = parte_numerica.substring(longitud-6,longitud-3)
+                val millones = parte_numerica.substring(0,longitud-6)
+                parte_numerica = s"millones.$miles.$unidades"
+            else                        // 23000
+                val unidades = parte_numerica.substring(longitud-3)
+                val miles = parte_numerica.substring(0,longitud-3)
+                parte_numerica = s"$miles.$unidades"
+        // Ensamblo y ya estoy !
+        dni_formateado : String =s"${parte_numerica}${dni_formateado}"
+        return dni_formateado
 
 object DNI:
     private val LETRAS_DNI: HashMap[Int, Char] = HashMap(
@@ -64,12 +87,18 @@ object DNI:
         var lleva_puntos:Boolean = false
         
         for (caracter_actual <- dni.toCharArray.reverse)
+            // La primera:
+            //     la tomo como letra... a no ser que sea un numero... entonces exploto
             if(letra_del_dni == null)           // Estoy en el primero
                 if (caracter_actual.isDigit)
                     error = "El DNI no contiene una letra de control"
                 else
                     letra_del_dni = s"$caracter_actual" // YA tengo la letra
             else
+                // La segunda 
+                //  Debe ser un número --> Me lo guardo
+                //  O un guión o un espacio --->paso de ese
+                //. Si es otra cosa: Exploto !
                 if(numero_del_dni.length == 0)  // Estoy en el segundo
                     if (caracter_actual.isDigit)  // Me lo guardo
                         numero_del_dni = s"$caracter_actual$numero_del_dni"
@@ -97,14 +126,4 @@ object DNI:
             return ( -1, '-', error)
         return (numero_del_dni.toInt, letra_del_dni.toUpperCase.charAt(0), null)
         
-        // La primera:
-        //     la tomo como letra... a no ser que sea un numero... entonces exploto
-        // La segunda 
-        //  Debe ser un número --> Me lo guardo
-        //  O un guión o un espacio --->paso de ese
-        //. Si es otra cosa: Exploto !
-        // A partir de ahí, deben ser todos dígitos....
-        //  Salvo que esté en el 4º o 8º puede ser un punto
-        //   De hecho, si estoy en el octavo y el cuarto fue un punto... 
-        //      DEBE SER UN PUNTO
     }

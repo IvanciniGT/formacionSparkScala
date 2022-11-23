@@ -45,4 +45,11 @@ class PruebasDNI extends munit.FunSuite {
     assert( error != null, "El dni debe dar error" )
   }
   
+  test("Validar el DNI 2300000T") {
+    val un_dni=new DNI("2300000T")
+    val formateado=un_dni.formatear(
+      ceros = false, puntos = false, separador= "", letraMayusculas = true)
+    assert( formateado == "2300000T", "El dni debe dar error" )
+  }
+  
 }
