@@ -4,7 +4,7 @@ import scala.collection.immutable.HashMap
 
 class DNI( val dni:String ):
     // Constructor
-    val(numero, letra, error):(Int, Char, String)=validarDNI(dni)
+    val(numero, letra, error):(Int, Char, String)=DNI.validarDNI(dni)
     val valido:Boolean = error == null
     // TODO         
     
@@ -42,13 +42,13 @@ class DNI( val dni:String ):
                 val unidades = parte_numerica.substring(longitud-3)
                 val miles = parte_numerica.substring(longitud-6,longitud-3)
                 val millones = parte_numerica.substring(0,longitud-6)
-                parte_numerica = s"millones.$miles.$unidades"
+                parte_numerica = s"$millones.$miles.$unidades"
             else                        // 23000
                 val unidades = parte_numerica.substring(longitud-3)
                 val miles = parte_numerica.substring(0,longitud-3)
                 parte_numerica = s"$miles.$unidades"
         // Ensamblo y ya estoy !
-        dni_formateado : String =s"${parte_numerica}${dni_formateado}"
+        dni_formateado= s"${parte_numerica}${dni_formateado}"
         return dni_formateado
 
 object DNI:

@@ -45,11 +45,52 @@ class PruebasDNI extends munit.FunSuite {
     assert( error != null, "El dni debe dar error" )
   }
   
-  test("Validar el DNI 2300000T") {
+  test("Formatear el DNI 2300000T") {
     val un_dni=new DNI("2300000T")
     val formateado=un_dni.formatear(
       ceros = false, puntos = false, separador= "", letraMayusculas = true)
     assert( formateado == "2300000T", "El dni debe dar error" )
+  }
+  
+  test("Formatear el DNI 2300000T") {
+    val un_dni=new DNI("2300000T")
+    val formateado=un_dni.formatear(
+      ceros = true, puntos = false, separador= "", letraMayusculas = true)
+    assert( formateado == "02300000T", "Formato incorrecto" )
+  }
+  
+  test("Formatear el DNI 2300000T") {
+    val un_dni=new DNI("2300000T")
+    val formateado=un_dni.formatear(
+      ceros = false, puntos = true, separador= "", letraMayusculas = true)
+    assert( formateado == "2.300.000T", "Formato incorrecto" )
+  }
+  
+  test("Formatear el DNI 2300000T") {
+    val un_dni=new DNI("2300000T")
+    val formateado=un_dni.formatear(
+      ceros = false, puntos = false, separador= "-", letraMayusculas = true)
+    assert( formateado == "2300000-T", "Formato incorrecto" )
+  }
+  test("Formatear el DNI 2300000T") {
+    val un_dni=new DNI("2300000T")
+    val formateado=un_dni.formatear(
+      ceros = false, puntos = false, separador= "-", letraMayusculas = false)
+    assert( formateado == "2300000-t", "Formato incorrecto" )
+  }
+  
+  test("Formatear el DNI 23000T") {
+    val un_dni=new DNI("23000T")
+    val formateado=un_dni.formatear(
+      ceros = false, puntos = true, separador= "-", letraMayusculas = false)
+    assert( formateado == "23.000-t", "Formato incorrecto" )
+  }
+  
+  test("Formatear el DNI 23000T") {
+    val un_dni=new DNI("23000T")
+    val formateado=un_dni.formatear(
+      ceros = true, puntos = true, separador= "-", letraMayusculas = false)
+    assert( formateado == "00.023.000-t", "Formato incorrecto" )
   }
   
 }
