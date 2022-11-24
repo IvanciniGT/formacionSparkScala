@@ -66,9 +66,15 @@ object Main extends App {
     //          El único que podrá acceder al valor de esa variable es el cliente.
     var numero_invalidos = contexto_de_spark.longAccumulator("DNIs Invalidos")
     // Quiero una lista con los dnis inválidos
+    val dnis_invalidos_acumulados = new DNIsAccumulator()
+    contexto_de_spark.register(dnis_invalidos_acumulados, "DNIs inválidos") 
+
     rdd_completo.map(       dni_como_texto  =>  new DNI(dni_como_texto)         )
                 .filter(    objeto_dni      =>  {
-                                                    if(!objeto_dni.valido) numero_invalidos.add(1)
+                                                    if(!objeto_dni.valido){
+                                                        numero_invalidos.add(1)      
+                                                        dnis_invalidos_acumulados.add(objeto_dni.dni)
+                                                    } 
                                                     objeto_dni.valido
                                                 }               
                                                                                 )
@@ -78,6 +84,8 @@ object Main extends App {
                                                 }
                                                                                 )
     println(s"El número total de dnis inválidos es: ${numero_invalidos.value}")
+    println(s"Y son:")
+    dnis_invalidos_acumulados.value.foreach(println)
 
     // Queramos sacar un recuento del numero de DNIs inválidos
     
@@ -95,4 +103,3 @@ object Main extends App {
     
     Thread.sleep(100000000) // Que el programa se quede aquí frito esperando a "nada"
 }
-

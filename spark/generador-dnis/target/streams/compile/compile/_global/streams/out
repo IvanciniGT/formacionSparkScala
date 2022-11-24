@@ -1,6 +1,2 @@
-[0m[[0m[31merror[0m] [0m[0m/home/ubuntu/environment/curso/spark/generador-dnis/src/main/scala/Main.scala:61:85: missing argument list for method formatear in class DNI[0m
-[0m[[0m[31merror[0m] [0m[0mUnapplied methods are only converted to functions when a function type is expected.[0m
-[0m[[0m[31merror[0m] [0m[0mYou can make this conversion explicit by writing `formatear _` or `formatear(_,_,_,_)` instead of `formatear`.[0m
-[0m[[0m[31merror[0m] [0m[0m                                                    val dni_formateado = objeto_dni.formatear[0m
-[0m[[0m[31merror[0m] [0m[0m                                                                                    ^[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[33mwarn[0m] [0m[0m1 deprecation (since 2.13.3); re-run with -deprecation for details[0m
+[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
