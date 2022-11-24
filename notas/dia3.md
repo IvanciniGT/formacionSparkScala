@@ -280,6 +280,8 @@ Que es un DStream? Una lista de RDDs
     
     Mi máquina                                              |          Cluster Spark
     ----------------------------------------------------------------------------------------------------
+    SO - Ubuntu                                             |
+    La MAQUINA virtual de JAVA                              | Su JVM                    Su propia JVM
      Programa                                               |     Maestro                   Ejecutor
      1º abrir conexión con el cluster
      2º Le mando al cluster las "funciones scala"
@@ -313,3 +315,6 @@ Spark nosofrece una interfaz gráfica, con la que entender/analizar/monitorizar 
         3
         ...
         1M
+
+Scala es un lenguaje que al final compila código en otro lenguaje que se llama? Byte-Code
+Quién ejecuta el byte-code? La MAQUINA virtual de java

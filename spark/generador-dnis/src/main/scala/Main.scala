@@ -54,15 +54,31 @@ object Main extends App {
     // Quiero filtar los guays
     //rdd_completo.filter(    dni_como_texto  =>  new DNI(dni_como_texto).valido )
     //            .foreach(   dni_como_texto => println(s"DNI válido: ${dni}")   )
+    
+    //var numero_invalidos=0 // Esto no se puede montar en Spark
+    // Para estos escenarios, Spark Ofrece una solución: LOS ACUMULADORES ! Accumulator de Spark
+    // Qué es un accumulator: Una variable compartida entre todos las máquinas virtuales,
+    //                        Junto con un mecanismo para su sincronización
+    // CUIDADO: Realmente la variable solo existe en una JVM: El maestro
+    //          El cliente, puede pedir el dato bueno, al maestro
+    //          Los ejecutores, solo pueden modificar la variable, no consultarla
+    //          Es como si fuera una variable de SOLO ESCRITURA !
+    //          El único que podrá acceder al valor de esa variable es el cliente.
+    var numero_invalidos = contexto_de_spark.longAccumulator("DNIs Invalidos")
 
     rdd_completo.map(       dni_como_texto  =>  new DNI(dni_como_texto)         )
-                .filter(    objeto_dni      =>  objeto_dni.valido               )
+                .filter(    objeto_dni      =>  {
+                                                    if(!objeto_dni.valido) numero_invalidos.add(1)
+                                                    objeto_dni.valido
+                                                }               
+                                                                                )
                 .foreach(   objeto_dni      =>  {
                                                     val dni_formateado = objeto_dni.formatear()
                                                     println(s"DNI válido: ${ dni_formateado }" )   
                                                 }
                                                                                 )
-    
+    println(s"El número total de dnis inválidos es: ${numero_invalidos.value}")
+
     // Queramos sacar un recuento del numero de DNIs inválidos
     
     
