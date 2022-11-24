@@ -1,59 +1,45 @@
-[0m[[0m[31merror[0m] [0m[0morg.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 1.0 failed 1 times, most recent failure: Lost task 0.0 in stage 1.0 (TID 10) (ip-172-31-45-104.eu-west-1.compute.internal executor driver): java.lang.OutOfMemoryError: Java heap space[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.lang.Double.valueOf(Double.java:524)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.BoxesRunTime.boxToDouble(BoxesRunTime.java:77)[0m
-[0m[[0m[31merror[0m] [0m[0m	at EstimadorPi.$anonfun$estimar$2$adapted(EstimadorPi.scala:9)[0m
-[0m[[0m[31merror[0m] [0m[0m	at EstimadorPi$$Lambda$6050/0x0000000841da8840.apply(Unknown Source)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.VectorStatics$.mapElemsRest(Vector.scala:1886)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.VectorStatics$.mapElemsRest(Vector.scala:1901)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.VectorStatics$.mapElemsRest(Vector.scala:1901)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.Vector5.map(Vector.scala:1901)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.Vector5.map(Vector.scala:780)[0m
-[0m[[0m[31merror[0m] [0m[0m	at EstimadorPi.estimar(EstimadorPi.scala:9)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Main$.$anonfun$suma_de_pis$2(Main.scala:35)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Main$.$anonfun$suma_de_pis$2$adapted(Main.scala:35)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Main$$$Lambda$6046/0x0000000841da5840.apply(Unknown Source)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.Iterator$$anon$9.next(Iterator.scala:577)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.IterableOnceOps.reduceLeft(IterableOnce.scala:733)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.IterableOnceOps.reduceLeft$(IterableOnce.scala:724)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.AbstractIterator.reduceLeft(Iterator.scala:1293)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDD.$anonfun$reduce$2(RDD.scala:1097)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDD$$Lambda$5909/0x0000000841d31840.apply(Unknown Source)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.SparkContext.$anonfun$runJob$6(SparkContext.scala:2322)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.SparkContext$$Lambda$5910/0x0000000841d34040.apply(Unknown Source)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.scheduler.Task.run(Task.scala:136)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$3(Executor.scala:548)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.executor.Executor$TaskRunner$$Lambda$5847/0x0000000841cffc40.apply(Unknown Source)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1504)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:551)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.lang.Thread.run(Thread.java:829)[0m
-[0m[[0m[31merror[0m] [0m[0m[0m
-[0m[[0m[31merror[0m] [0m[0mDriver stacktrace:[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.scheduler.DAGScheduler.failJobAndIndependentStages(DAGScheduler.scala:2672)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2(DAGScheduler.scala:2608)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2$adapted(DAGScheduler.scala:2607)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.List.foreach(List.scala:333)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:2607)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1(DAGScheduler.scala:1182)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1$adapted(DAGScheduler.scala:1182)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.Option.foreach(Option.scala:437)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.scheduler.DAGScheduler.handleTaskSetFailed(DAGScheduler.scala:1182)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.doOnReceive(DAGScheduler.scala:2860)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2802)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2791)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:49)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:952)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2228)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2323)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDD.$anonfun$reduce$1(RDD.scala:1111)[0m
+[0m[[0m[31merror[0m] [0m[0morg.apache.hadoop.mapred.FileAlreadyExistsException: Output directory file:/home/ubuntu/environment/dnis/guays.txt already exists[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hadoop.mapred.FileOutputFormat.checkOutputSpecs(FileOutputFormat.java:131)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.internal.io.HadoopMapRedWriteConfigUtil.assertConf(SparkHadoopWriter.scala:299)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.internal.io.SparkHadoopWriter$.write(SparkHadoopWriter.scala:71)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.PairRDDFunctions.$anonfun$saveAsHadoopDataset$1(PairRDDFunctions.scala:1091)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)[0m
 [0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)[0m
 [0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)[0m
 [0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDD.withScope(RDD.scala:406)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDD.reduce(RDD.scala:1093)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Main$.delayedEndpoint$Main$1(Main.scala:36)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Main$delayedInit$body.apply(Main.scala:4)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.PairRDDFunctions.saveAsHadoopDataset(PairRDDFunctions.scala:1089)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.PairRDDFunctions.$anonfun$saveAsHadoopFile$4(PairRDDFunctions.scala:1062)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDD.withScope(RDD.scala:406)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.PairRDDFunctions.saveAsHadoopFile(PairRDDFunctions.scala:1027)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.PairRDDFunctions.$anonfun$saveAsHadoopFile$3(PairRDDFunctions.scala:1009)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDD.withScope(RDD.scala:406)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.PairRDDFunctions.saveAsHadoopFile(PairRDDFunctions.scala:1008)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.PairRDDFunctions.$anonfun$saveAsHadoopFile$2(PairRDDFunctions.scala:965)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDD.withScope(RDD.scala:406)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.PairRDDFunctions.saveAsHadoopFile(PairRDDFunctions.scala:963)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDD.$anonfun$saveAsTextFile$2(RDD.scala:1599)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDD.withScope(RDD.scala:406)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDD.saveAsTextFile(RDD.scala:1599)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDD.$anonfun$saveAsTextFile$1(RDD.scala:1585)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDD.withScope(RDD.scala:406)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDD.saveAsTextFile(RDD.scala:1585)[0m
+[0m[[0m[31merror[0m] [0m[0m	at Main$.delayedEndpoint$Main$1(Main.scala:31)[0m
+[0m[[0m[31merror[0m] [0m[0m	at Main$delayedInit$body.apply(Main.scala:5)[0m
 [0m[[0m[31merror[0m] [0m[0m	at scala.Function0.apply$mcV$sp(Function0.scala:39)[0m
 [0m[[0m[31merror[0m] [0m[0m	at scala.Function0.apply$mcV$sp$(Function0.scala:39)[0m
 [0m[[0m[31merror[0m] [0m[0m	at scala.runtime.AbstractFunction0.apply$mcV$sp(AbstractFunction0.scala:17)[0m
@@ -64,7 +50,7 @@
 [0m[[0m[31merror[0m] [0m[0m	at scala.collection.AbstractIterable.foreach(Iterable.scala:926)[0m
 [0m[[0m[31merror[0m] [0m[0m	at scala.App.main(App.scala:76)[0m
 [0m[[0m[31merror[0m] [0m[0m	at scala.App.main$(App.scala:74)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Main$.main(Main.scala:4)[0m
+[0m[[0m[31merror[0m] [0m[0m	at Main$.main(Main.scala:5)[0m
 [0m[[0m[31merror[0m] [0m[0m	at Main.main(Main.scala)[0m
 [0m[[0m[31merror[0m] [0m[0m	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)[0m
 [0m[[0m[31merror[0m] [0m[0m	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)[0m
@@ -83,67 +69,4 @@
 [0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)[0m
 [0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)[0m
 [0m[[0m[31merror[0m] [0m[0m	at java.base/java.lang.Thread.run(Thread.java:829)[0m
-[0m[[0m[31merror[0m] [0m[0mCaused by: java.lang.OutOfMemoryError: Java heap space[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.lang.Double.valueOf(Double.java:524)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.BoxesRunTime.boxToDouble(BoxesRunTime.java:77)[0m
-[0m[[0m[31merror[0m] [0m[0m	at EstimadorPi.$anonfun$estimar$2$adapted(EstimadorPi.scala:9)[0m
-[0m[[0m[31merror[0m] [0m[0m	at EstimadorPi$$Lambda$6050/0x0000000841da8840.apply(Unknown Source)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.VectorStatics$.mapElemsRest(Vector.scala:1886)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.VectorStatics$.mapElemsRest(Vector.scala:1901)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.VectorStatics$.mapElemsRest(Vector.scala:1901)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.Vector5.map(Vector.scala:1901)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.Vector5.map(Vector.scala:780)[0m
-[0m[[0m[31merror[0m] [0m[0m	at EstimadorPi.estimar(EstimadorPi.scala:9)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Main$.$anonfun$suma_de_pis$2(Main.scala:35)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Main$.$anonfun$suma_de_pis$2$adapted(Main.scala:35)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Main$$$Lambda$6046/0x0000000841da5840.apply(Unknown Source)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.Iterator$$anon$9.next(Iterator.scala:577)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.IterableOnceOps.reduceLeft(IterableOnce.scala:733)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.IterableOnceOps.reduceLeft$(IterableOnce.scala:724)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.AbstractIterator.reduceLeft(Iterator.scala:1293)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDD.$anonfun$reduce$2(RDD.scala:1097)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDD$$Lambda$5909/0x0000000841d31840.apply(Unknown Source)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.SparkContext.$anonfun$runJob$6(SparkContext.scala:2322)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.SparkContext$$Lambda$5910/0x0000000841d34040.apply(Unknown Source)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.scheduler.Task.run(Task.scala:136)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$3(Executor.scala:548)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.executor.Executor$TaskRunner$$Lambda$5847/0x0000000841cffc40.apply(Unknown Source)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1504)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:551)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.lang.Thread.run(Thread.java:829)[0m
-[0m[[0m[31merror[0m] [0m[0m(Compile / [31mrun[0m) org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 1.0 failed 1 times, most recent failure: Lost task 0.0 in stage 1.0 (TID 10) (ip-172-31-45-104.eu-west-1.compute.internal executor driver): java.lang.OutOfMemoryError: Java heap space[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.lang.Double.valueOf(Double.java:524)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.BoxesRunTime.boxToDouble(BoxesRunTime.java:77)[0m
-[0m[[0m[31merror[0m] [0m[0m	at EstimadorPi.$anonfun$estimar$2$adapted(EstimadorPi.scala:9)[0m
-[0m[[0m[31merror[0m] [0m[0m	at EstimadorPi$$Lambda$6050/0x0000000841da8840.apply(Unknown Source)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.VectorStatics$.mapElemsRest(Vector.scala:1886)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.VectorStatics$.mapElemsRest(Vector.scala:1901)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.VectorStatics$.mapElemsRest(Vector.scala:1901)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.Vector5.map(Vector.scala:1901)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.Vector5.map(Vector.scala:780)[0m
-[0m[[0m[31merror[0m] [0m[0m	at EstimadorPi.estimar(EstimadorPi.scala:9)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Main$.$anonfun$suma_de_pis$2(Main.scala:35)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Main$.$anonfun$suma_de_pis$2$adapted(Main.scala:35)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Main$$$Lambda$6046/0x0000000841da5840.apply(Unknown Source)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.Iterator$$anon$9.next(Iterator.scala:577)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.IterableOnceOps.reduceLeft(IterableOnce.scala:733)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.IterableOnceOps.reduceLeft$(IterableOnce.scala:724)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.AbstractIterator.reduceLeft(Iterator.scala:1293)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDD.$anonfun$reduce$2(RDD.scala:1097)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.rdd.RDD$$Lambda$5909/0x0000000841d31840.apply(Unknown Source)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.SparkContext.$anonfun$runJob$6(SparkContext.scala:2322)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.SparkContext$$Lambda$5910/0x0000000841d34040.apply(Unknown Source)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.scheduler.Task.run(Task.scala:136)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$3(Executor.scala:548)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.executor.Executor$TaskRunner$$Lambda$5847/0x0000000841cffc40.apply(Unknown Source)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1504)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:551)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.lang.Thread.run(Thread.java:829)[0m
-[0m[[0m[31merror[0m] [0m[0m[0m
-[0m[[0m[31merror[0m] [0m[0mDriver stacktrace:[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mrun[0m) org.apache.hadoop.mapred.FileAlreadyExistsException: Output directory file:/home/ubuntu/environment/dnis/guays.txt already exists[0m

@@ -24,6 +24,7 @@ import dni.DNI // La clase Pi está dentro del paquete calculo
     
     println(dnis)
     
+    // A la que nos quedamos con los buenos, contabilizar los malos
     var resultado = dnis
                         .map(       dni_como_texto  => new DNI(dni_como_texto)                          )
                         .filter(    dni             => dni.valido                                       )
@@ -38,6 +39,8 @@ import dni.DNI // La clase Pi está dentro del paquete calculo
                         
                         .toList
     println(resultado)
+    println(s"El número total de dnis inválidos es: ")
+    //
     
     var invalidos = dnis
                         .map(       dni_como_texto  => new DNI(dni_como_texto)                          )

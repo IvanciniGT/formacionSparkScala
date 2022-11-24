@@ -15,14 +15,57 @@ object Main extends App {
     val partes = 2
     val numero_de_dnis_a_generar = 10
     val lista_de_numeros = 1 to numero_de_dnis_a_generar
-    val rdd = contexto_de_spark.parallelize(lista_de_numeros, partes)
-    // Paso 3: Jugar con mis datos... Map-Reduce
-    rdd .map(   numero      => Random.between(1,99999999)   )   // genero numero aleatorio entre
+
+    // Generando DNIS guays    
+    
+    contexto_de_spark.parallelize(lista_de_numeros, partes)
+        .map(   numero      => Random.between(1,99999999)   )   // genero numero aleatorio entre
                                                                                     // 1 y 99999999
-        .map(   numero       => s"${numero}${DNI.letraDelNumero(numero)}" )
-        //.foreach(   println     )
+        .map(   numero      => s"${numero}${DNI.letraDelNumero(numero)}" )
+
+        .map(   numero      => {
+                                    println(numero)
+                                    numero
+                                }                       ) // No devuelve nada
         .repartition(1)
-        .saveAsTextFile("/home/ubuntu/environment/dnis.txt")
+        .saveAsTextFile("/home/ubuntu/environment/dnis/guays.txt")
+    
+    // Generando DNIs ruina !
+    
+    contexto_de_spark.parallelize(lista_de_numeros, partes)
+        .map(   numero      => Random.between(1,99999999)   )   // genero numero aleatorio entre
+                                                                                    // 1 y 99999999
+        .map(   numero      => s"${numero}X" )
+
+        .map(   numero      => {
+                                    println(numero)
+                                    numero
+                                }                       ) // No devuelve nada
+        .repartition(1)
+        .saveAsTextFile("/home/ubuntu/environment/dnis/invalidos.txt")
+    
+    // leer ambos ficheros y juntarlos en un RDD
+    val rdd_guays = contexto_de_spark.textFile("/home/ubuntu/environment/dnis/guays.txt/part-00000")
+    val rdd_ruinas = contexto_de_spark.textFile("/home/ubuntu/environment/dnis/invalidos.txt/part-00000")
+    // Nos llega este conjunto de datos. Quiero saber cuales DNIs son correctos
+    val rdd_completo = rdd_guays.union(rdd_ruinas)
+    rdd_completo.foreach(println)
+    
+    // Quiero filtar los guays
+    //rdd_completo.filter(    dni_como_texto  =>  new DNI(dni_como_texto).valido )
+    //            .foreach(   dni_como_texto => println(s"DNI válido: ${dni}")   )
+
+    rdd_completo.map(       dni_como_texto  =>  new DNI(dni_como_texto)         )
+                .filter(    objeto_dni      =>  objeto_dni.valido               )
+                .foreach(   objeto_dni      =>  {
+                                                    val dni_formateado = objeto_dni.formatear()
+                                                    println(s"DNI válido: ${ dni_formateado }" )   
+                                                }
+                                                                                )
+    
+    // Queramos sacar un recuento del numero de DNIs inválidos
+    
+    
     // Paso 4: Vuelco información
 
     // Paso 5: Cierro !
