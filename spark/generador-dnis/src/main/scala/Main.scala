@@ -65,7 +65,7 @@ object Main extends App {
     //          Es como si fuera una variable de SOLO ESCRITURA !
     //          El único que podrá acceder al valor de esa variable es el cliente.
     var numero_invalidos = contexto_de_spark.longAccumulator("DNIs Invalidos")
-
+    // Quiero una lista con los dnis inválidos
     rdd_completo.map(       dni_como_texto  =>  new DNI(dni_como_texto)         )
                 .filter(    objeto_dni      =>  {
                                                     if(!objeto_dni.valido) numero_invalidos.add(1)
