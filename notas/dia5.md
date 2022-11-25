@@ -78,3 +78,37 @@ Recepción de mensajes
                    ....... libre :)
                                     ^ Inicia mi procesamiento 7 8 9 10 11
                                     .... libre :) 
+                                    
+---
+Aclaración a la linea 49 del Main de streaming
+
+No hacemos eso nunca... porque queremos procesos independizados.
+
+            extraer hashtags... A la que los extraigo, me cuesta poco el ir consolidando bloques
+                                                       _______________
+KAFKA -> Tweets -> Hashtags -> BBDD
+                                    ---- Otro proceso spark ---> select sum()
+
+
+----
+
+Avro y parquet son formatos de almacenamiento/transmisión de datos
+muy utilizados en el mundo BIGDATA
+
+Avro guarda los centrado en el concepto de FILA
+Parquet guarda los datos centrado en el concepto de COLUMNA
+
+Datos: Personas
+
+Nombre      Edad
+Ivan         44
+Angel Luis   25
+Elena        27
+
+AVRO: [ Nombre: Ivan, Edad: 44 ],[ Nombre: Angel Luis, Edad: 25 ],[ Nombre: Elena, Edad: 27 ]
+
+PARQUET: [ Nombre: Ivan, Angel Luis, Elena ],[ Edad: 44, 25, 27 ]
+
+Si quiero filtrar por columnas: EDAD > 30
+Si quiero filtrar por fila: Ivan
+
