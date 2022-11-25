@@ -1,7 +1,7 @@
 
 import scala.collection.immutable.HashMap
 
-class DNI( val dni:String ){
+class DNI( val dni:String ) extends Serializable{
     // Constructor
     val(numero, letra, error):(Int, Char, String)=DNI.validarDNI(dni)
     val valido:Boolean = (error == null)

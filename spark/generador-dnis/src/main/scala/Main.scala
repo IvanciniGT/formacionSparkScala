@@ -6,9 +6,11 @@ object Main extends App {
     //  Paso 1: Abro conexción con un cluster(en este caso lo estamos creando)
     val configuracion         = new SparkConf()
                                              // Con qué cluster me conecto?
-                                             .setMaster("local[2]") // Numero de cores que puede usar de mi host
+                                             .setMaster("spark://172.31.45.104:7077") // Numero de cores que puede usar de mi host
+                                             .setJars(List("/home/ubuntu/environment/curso/spark/generador-dnis/target/scala-2.13/hello-world_2.13-1.0.jar"))
+
                                              // Un ID de mi programa/proceso de datos
-                                             .setAppName("MiEstimadoDePi")
+                                             .setAppName("GeneradorDNIs")
     val contexto_de_spark     = new SparkContext(configuracion)
       
     // Paso 2: Meter mis datos en spark: RDD o un DataFrame
@@ -64,7 +66,8 @@ object Main extends App {
     //          Los ejecutores, solo pueden modificar la variable, no consultarla
     //          Es como si fuera una variable de SOLO ESCRITURA !
     //          El único que podrá acceder al valor de esa variable es el cliente.
-    var numero_invalidos = contexto_de_spark.longAccumulator("DNIs Invalidos")
+//    var numero_invalidos_malo = 0
+    val numero_invalidos = contexto_de_spark.longAccumulator("DNIs Invalidos")
     // Quiero una lista con los dnis inválidos
     val dnis_invalidos_acumulados = new DNIsAccumulator()
     contexto_de_spark.register(dnis_invalidos_acumulados, "DNIs inválidos") 
@@ -72,8 +75,9 @@ object Main extends App {
     rdd_completo.map(       dni_como_texto  =>  new DNI(dni_como_texto)         )
                 .filter(    objeto_dni      =>  {
                                                     if(!objeto_dni.valido){
-                                                        numero_invalidos.add(1)      
-                                                        dnis_invalidos_acumulados.add(objeto_dni.dni)
+//                                                        numero_invalidos_malo+=1     
+//                                                        numero_invalidos.add(1)      
+//                                                        dnis_invalidos_acumulados.add(objeto_dni.dni)
                                                     } 
                                                     objeto_dni.valido
                                                 }               
@@ -83,6 +87,7 @@ object Main extends App {
                                                     println(s"DNI válido: ${ dni_formateado }" )   
                                                 }
                                                                                 )
+//    println(s"El número total de dnis inválidos es: ${numero_invalidos_malo}")
     println(s"El número total de dnis inválidos es: ${numero_invalidos.value}")
     println(s"Y son:")
     dnis_invalidos_acumulados.value.foreach(println)
