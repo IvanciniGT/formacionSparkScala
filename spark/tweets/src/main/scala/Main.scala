@@ -13,7 +13,23 @@ object Main extends App {
       
     // Paso 2: Meter mis datos en spark: RDD o un DataFrame
     
+    val rdd_tweets_originales   = contexto_de_spark.textFile("/home/ubuntu/environment/tweets.txt")
+    val rdd_tweets              = rdd_tweets_originales.map(  mensaje => new Tweet(mensaje)  )
+
+    val rdd_menciones           = rdd_tweets.flatMap( tweet => tweet.menciones )
+    rdd_menciones.foreach(println)
+
+    val rdd_hashtags           = rdd_tweets.flatMap( tweet => tweet.hashtags )
+    rdd_hashtags.foreach(println)
     
+    
+    rdd_hashtags.map(               hashtag => (hashtag, 1)                     )
+                .reduceByKey(                  _ + _                            )
+                .map(               tupla   => (tupla._2,tupla._1)              )
+                .sortByKey(         ascending = false                           )
+                .take(              5                                           )
+                .foreach(           println                                     )
+     
     
     // Paso 4: Vuelco información
 
