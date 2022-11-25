@@ -1,4 +1,4 @@
-[0m[[0m[31merror[0m] [0m[0m/home/ubuntu/environment/curso/spark/tweets/src/main/scala/Main.scala:22:23: value close is not a member of org.apache.spark.SparkContext[0m
-[0m[[0m[31merror[0m] [0m[0m    contexto_de_spark.close() //Que el programa se quede aquí frito esperando a "nada"[0m
-[0m[[0m[31merror[0m] [0m[0m                      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/ubuntu/environment/curso/spark/tweets/Tweet.java:3:1: `;` expected but `public` found.[0m
+[0m[[0m[31merror[0m] [0m[0mpublic class Tweet {[0m
+[0m[[0m[31merror[0m] [0m[0m^[0m
 [0m[[0m[31merror[0m] [0m[0mone error found[0m

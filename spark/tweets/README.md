@@ -18,3 +18,9 @@ De unos tweets que nos llegarán... y que por ahora los vais a leer de un ficher
 
     #España70 #ESPAÑA70
     #España70#goodvibes
+    
+// Lista de hashtags ignorados < - Gestionarla como un dato (RDD)
+
+Esta lista creeis que debe ser una lista estática... que no va a cambiar a lo largo del tiempo?
+
+regex -> regex101

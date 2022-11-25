@@ -1,0 +1,4 @@
+[0m[[0m[31merror[0m] [0m[0m/home/ubuntu/environment/curso/spark/tweets/src/test/scala/PruebasTweets.scala:1:8: not found: object calculo[0m
+[0m[[0m[31merror[0m] [0m[0mimport calculo.EstimadorPi[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
